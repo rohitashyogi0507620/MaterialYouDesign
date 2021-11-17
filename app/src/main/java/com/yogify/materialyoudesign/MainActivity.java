@@ -19,6 +19,9 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -83,10 +86,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPositiveButtonClick(Object selection) {
                 String datainmillis = selection.toString();
-                Toast.makeText(getApplicationContext(), selection.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getDate(Long.valueOf(datainmillis), "dd-MM-yyyy"), Toast.LENGTH_SHORT).show();
             }
         });
 
+    }
+
+    public static String getDate(long milliSeconds, String dateFormat) {
+        // Create a DateFormatter object for displaying date in specified format.
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+
+        // Create a calendar object that will convert the date and time value in milliseconds to date.
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliSeconds);
+        return formatter.format(calendar.getTime());
     }
 
     public void ShowBasicDialog() {

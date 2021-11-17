@@ -4,7 +4,8 @@
     <item
         android:enabled="true"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Home" />
+        android:title="Home"
+        android:checked="true"/>
     <item
         android:id="@+id/notification"
         android:enabled="true"
